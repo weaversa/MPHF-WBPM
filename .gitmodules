@@ -1,0 +1,9 @@
+[submodule "lib/c_list_types"]
+	path = lib/c_list_types
+	url = https://github.com/weaversa/c_list_types.git
+[submodule "lib/XORSATFilter"]
+	path = lib/XORSATFilter
+	url = git@github.com:NationalSecurityAgency/XORSATFilter.git
+[submodule "lib/weighted-bipartite-perfect-matching"]
+	path = lib/weighted-bipartite-perfect-matching
+	url = git@github.com:weaversa/weighted-bipartite-perfect-matching.git
