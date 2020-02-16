@@ -13,9 +13,9 @@ CC = gcc
 #DBG = -g -Wconversion -Wall -fstack-protector-all -pedantic
 OPT = -march=native -O3 -DNDEBUG -ffast-math -fomit-frame-pointer -finline-functions
 INCLUDES = -Iinclude
-LIBS = -l$(MPHFLIB) -lm
+LIBS = -l$(MPHFLIB) -lm -lpthread
 LDFLAGS = -Llib
-CFLAGS = -std=gnu99 $(DBG) $(OPT) $(INCLUDES) -fopenmp
+CFLAGS = -std=gnu99 $(DBG) $(OPT) $(INCLUDES)
 AR = ar r
 RANLIB = ranlib
 
@@ -34,6 +34,7 @@ endif
 	@rm -f .depend.bak
 -include .depend
 
+OBJECTS_CTHREADPOOL = lib/XORSATFilter/lib/C-Thread-Pool/obj/*.o
 OBJECTS_BITVECTOR = lib/XORSATFilter/lib/bitvector/obj/*.o
 OBJECTS_XORSAT = lib/XORSATFilter/obj/*.o
 OBJECTS_HUNGARIAN = lib/weighted-bipartite-perfect-matching/obj/*.o
@@ -53,7 +54,7 @@ lib/lib$(MPHFLIB).a: $(OBJECTS) Makefile lib/XORSATFilter/lib/libxorsatfilter.a 
 	@echo "Creating "$@""
 	@[ -d lib ] || mkdir -p lib
 	@rm -f $@
-#	@$(AR) -M < libar.mri
+	@$(AR) $@ $(OBJECTS_CTHREADPOOL)
 	@$(AR) $@ $(OBJECTS_BITVECTOR)
 	@$(AR) $@ $(OBJECTS_XORSAT)
 	@$(AR) $@ $(OBJECTS_HUNGARIAN)

@@ -66,12 +66,15 @@ MPHFQuerier *MPHFBuilderFinalize(MPHFBuilder *mphfb, MPHFParameters sParams, uin
   fprintf(stderr, "max offset = %u\n", max_offset);
   
    //Build Blocks
-  #pragma omp parallel for num_threads(nThreads)
+  threadpool thpool = thpool_init(nThreads);
   for(i = 0; i < mphfb->pBlocks.nLength; i++) {
     MPHFBlock *pBlock = &mphfb->pBlocks.pList[i];
-    MPHFBuildBlock(pBlock);
+    thpool_add_work(thpool, (void*)MPHFBuildBlock, pBlock);
   }
 
+  thpool_wait(thpool);
+  thpool_destroy(thpool);
+  
   MPHFQuerier *mphfq = MPHFCreateQuerierFromBuilder(mphfb, nMPHFElements, sParams, nThreads);
 
   return mphfq;
