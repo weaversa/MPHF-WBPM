@@ -69,14 +69,14 @@ int main() {
   }
   fclose(fout);
   MPHFQuerierFree(mphfq);
-
-  fout = fopen("test.mphf", "r");
-  mphfq = MPHFDeserialize(fout);
+  
+  FILE *fin = fopen("test.mphf", "r");
+  mphfq = MPHFDeserialize(fin);
   if(mphfq == NULL) {
     fprintf(stderr, "Deserialization failed...exiting\n");
     return -1;
   }
-  fclose(fout);
+  fclose(fin);
 
   
   uint8_t *seen = calloc(nElements, sizeof(uint32_t));
