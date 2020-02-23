@@ -17,7 +17,7 @@ Technology](https://www.cs.cmu.edu/~mheule/publications/AAAI-WeaverS.1625.pdf).
 
 # Dependencies
 
-This project relies on some git submodules. To get these module, clone
+This project relies on pthreads and some git submodules. To get these, clone
 the repository by doing either
 ```
 git clone --recursive git@github.com:weaversa/MPHF-WBPM.git
