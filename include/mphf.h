@@ -16,12 +16,20 @@
 typedef struct MPHFParameters {
   uint16_t nEltsPerBlock; //  Large numbers provide higher efficiency
                           //  Small numbers provide faster build time
-  XORSATFilterParameters xsfp; //Parameters for the XORSAT Filter  
+                          //  This number is rounded internally to be a multiple of 64, so
+                          //    you may as well just pick a value that is already a
+                          //    multiple of 64
+  XORSATFilterParameters xsfp; //Parameters for the XORSAT Filter
+                               // Ensure that xsfp.nSolutions == 1
 } MPHFParameters;
 
-extern MPHFParameters MPHFEfficientParameters;
+// Older parameters from the original paper
 extern MPHFParameters MPHFPaperParameters;
 extern MPHFParameters MPHFFastParameters;
+
+// Newer parameters using a fast hashing method by Martin Dietzfelbinger and Stefan Walzer
+extern MPHFParameters MPHFDWPaperParameters;
+extern MPHFParameters MPHFDWFastParameters;
 
 typedef struct MPHFBuilder {
   MPHFHash_list pHashes;

@@ -10,7 +10,10 @@
 //#include "../lib/xxHash/xxh3.h"
 
 typedef struct MPHFHash {
-  uint64_t h1;
+  union {
+    uint64_t h1;
+    uint32_t h32[2];
+  };
 } MPHFHash;
 
 create_c_list_headers(MPHFHash_list, MPHFHash)

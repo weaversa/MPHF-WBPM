@@ -106,7 +106,7 @@ MPHFQuerier *MPHFCreateQuerierFromBuilder(MPHFBuilder *mphfb, uint32_t nMPHFElem
 
 #ifdef MPHF_PRINT_BUILD_PROGRESS  
   fprintf(stdout, "Testing filter efficiency with util func: %4.2lf%% efficient\n", XORSATFilterEfficiency(mphfq->xsfq, nFilterElements, 0.5) * 100.0);
-  fprintf(stdout, "Filter uses %lu bits, %4.2lf bits per element\n", XORSATFilterSize(mphfq->xsfq), ((double) XORSATFilterSize(mphfq->xsfq)) / (double) nFilterElements);
+  fprintf(stdout, "Filter uses %"PRIu64" bits, %4.2lf bits per element\n", XORSATFilterSize(mphfq->xsfq), ((double) XORSATFilterSize(mphfq->xsfq)) / (double) nFilterElements);
 #endif
   
   return mphfq;

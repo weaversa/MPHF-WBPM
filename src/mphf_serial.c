@@ -82,7 +82,7 @@ MPHFQuerier *MPHFDeserialize(FILE *pMPHFFile) {
   uint64_t nFilterWords = (uint64_t) (((nExpectedIndex - ((int64_t) nDiff * 64)) >> 6) * (int64_t) (xsfq->nSolutions + (xsfq->nMetaDataBytes*8)));
 
   if(nDataSize != (mphfsd.nBlocks * sizeof(int16_t)) + (nFilterWords * sizeof(uint64_t)) + ((xsfq->nBlocks+1) * sizeof(int16_t))) {
-    fprintf(stderr, "Error: filter file is corrupt %lu vs %lu\n", nDataSize, (mphfsd.nBlocks * sizeof(int16_t)) + (nFilterWords * sizeof(uint64_t)) + ((xsfq->nBlocks+1) * sizeof(int16_t)));
+    fprintf(stderr, "Error: filter file is corrupt %"PRIu64" vs %"PRIu64"\n", nDataSize, (mphfsd.nBlocks * sizeof(int16_t)) + (nFilterWords * sizeof(uint64_t)) + ((xsfq->nBlocks+1) * sizeof(int16_t)));
     free(xsfq);
     return NULL;
   }

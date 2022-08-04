@@ -41,6 +41,11 @@ MPHFQuerier *MPHFBuilderFinalize(MPHFBuilder *mphfb, MPHFParameters sParams, uin
     sParams.nEltsPerBlock = (uint16_t) mphfb->pHashes.nLength;
   }
 
+  if(sParams.xsfp.nSolutions != 1) {
+    fprintf(stderr, "MPHF paramters must have nSolutions set to 1, nosily correcting and moving on\n");
+    sParams.xsfp.nSolutions = 1;
+  }
+
   uint32_t nMPHFElements = (uint32_t) mphfb->pHashes.nLength;
   
   ret = MPHFDistributeHashesToBlocks(mphfb, sParams);

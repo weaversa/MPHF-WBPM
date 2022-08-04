@@ -43,9 +43,10 @@ int main() {
   }
 
   MPHFQuerier *mphfq = MPHFBuilderFinalize(mphfb,
-					   //MPHFEfficientParameters,
-                                           MPHFPaperParameters,
+                                           //MPHFPaperParameters,
                                            //MPHFFastParameters,
+                                           MPHFDWPaperParameters,
+                                           //MPHFDWFastParameters,
                                            nThreads);
 
   clock_t end_cpu = clock();

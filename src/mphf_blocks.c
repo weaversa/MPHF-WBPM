@@ -2,31 +2,40 @@
 
 // A brief description of the parameters below is given in `include/mphf.h`.
 
-MPHFParameters MPHFEfficientParameters =
-  { .nEltsPerBlock = 1500,
-    .xsfp =
-    { .nLitsPerRow   = 6,
-      .nSolutions    = 1,
-      .nEltsPerBlock = 5000,
-      .fEfficiency   = 1.00 },
-  };
- 
 MPHFParameters MPHFPaperParameters =
   { .nEltsPerBlock = 12288,
     .xsfp =
-    { .nLitsPerRow   = 0,
+    { .nLitsPerRow   = 5,
       .nSolutions    = 1,
-      .nEltsPerBlock = 4608, //12288,//6144,
+      .nEltsPerBlock = 4608,
       .fEfficiency   = 1.00 },
   };
 
 MPHFParameters MPHFFastParameters =
   { .nEltsPerBlock = 100,
-    .xsfp = 
+    .xsfp =
     { .nLitsPerRow   = 4,
       .nSolutions    = 1,
       .nEltsPerBlock = 750,
       .fEfficiency   = 0.95 },
+  };
+
+MPHFParameters MPHFDWPaperParameters =
+  { .nEltsPerBlock = 12288,
+    .xsfp =
+    { .nLitsPerRow   = 2,
+      .nSolutions    = 1,
+      .nEltsPerBlock = 4608,
+      .fEfficiency   = 1.00 },
+  };
+
+MPHFParameters MPHFDWFastParameters =
+  { .nEltsPerBlock = 100,
+    .xsfp =
+    { .nLitsPerRow   = 2,
+      .nSolutions    = 1,
+      .nEltsPerBlock = 750,
+      .fEfficiency   = 1.00 },
   };
 
 create_c_list_type(MPHFBlock_list, MPHFBlock)
